@@ -1,0 +1,4 @@
+
+**** ERROR file opened at 20130520 170355 GTB Yaz Saati, SAP-REL 640,0,377 RFC-VER 3  MT-SL
+T:8116 Error in program 'javaw': ======> Üst birim 200 sistemde mevcut de#il
+T:8116 Error in program 'javaw': <* RfcReceive [1] : returns 3:RFC_SYS_EXCEPTION
