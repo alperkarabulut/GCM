@@ -12,7 +12,7 @@
 	String devId = request.getParameter("deviceList").toString();
 	String MessageText = request.getParameter("message").toString();
 	Device dev = new Device();
-	dev.SendMessage(devId, MessageText);
+	dev.SendMessage(devId, MessageText, "");
 %>
 <span>Mesajınız <%=request.getParameter("deviceList") %> cihazına gönderildi.</span>
 <%} %>

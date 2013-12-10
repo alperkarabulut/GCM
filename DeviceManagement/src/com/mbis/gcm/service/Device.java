@@ -1,13 +1,25 @@
 package com.mbis.gcm.service;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javapns.Push;
+import javapns.communication.exceptions.CommunicationException;
+import javapns.communication.exceptions.KeystoreException;
+
+import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
-import javax.jws.WebMethod;
 
 import com.google.android.gcm.server.Message;
 import com.google.android.gcm.server.Result;
@@ -18,6 +30,7 @@ import com.mbis.gcm.crm.connect.RegisterDeviceRFC;
 import com.mbis.gcm.data.Devices;
 import com.sap.mw.jco.JCO.Structure;
 import com.sap.mw.jco.JCO.Table;
+import com.sun.xml.xsom.impl.parser.BaseContentRef;
 
 @WebService
 public class Device {
@@ -93,5 +106,38 @@ public class Device {
 			
 		}
 		return new  SendMessageResult(returnBuf, msgBuf);
+	}
+	@WebMethod
+	@WebResult( name = "SendMessageToApple" )
+	public SendMessageResult SendMessageToApple( @WebParam( name="DeviceId" ) String devId, @WebParam( name="Message") String MessageText, @WebParam( name="Production") boolean production ){
+		boolean returnBuf = false;
+		String msgBuf = "";
+		try {
+			
+/*			File file = new File( "C:/PushTest.p12" );
+			
+			InputStream is = new FileInputStream(file);
+			
+			KeyStore ks = KeyStore.getInstance("PKCS12");
+			char[] password = "d418N82p".toCharArray();
+			
+			ks.load(is, password);
+			*/
+			String keystoreFile = "C:/WebnakPush.p12";
+			String keystorePassword = "d418N82p";
+			
+			
+		
+			Push.alert(MessageText, keystoreFile, keystorePassword, production, devId );
+			//Push.alert(MessageText, keystoreFile, keystorePassword, false, devId );
+			returnBuf = true;
+//		} catch (CommunicationException | KeystoreException | KeyStoreException | NoSuchAlgorithmException | CertificateException | IOException e ) {
+		} catch (CommunicationException | KeystoreException e ) {
+			msgBuf = e.getMessage();
+			returnBuf = false;
+		}
+	
+		return new SendMessageResult(returnBuf, msgBuf);
+		
 	}
 }
