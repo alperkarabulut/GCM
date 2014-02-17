@@ -1,6 +1,5 @@
 package com.mbis.gcm.data;
 
-import sun.print.resources.serviceui_zh_TW;
 
 import com.mbis.gcm.crm.connect.CRMConfiguration;
 import com.mbis.gcm.crm.log.Log;

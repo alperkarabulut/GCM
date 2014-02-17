@@ -30,7 +30,6 @@ import com.mbis.gcm.crm.connect.RegisterDeviceRFC;
 import com.mbis.gcm.data.Devices;
 import com.sap.mw.jco.JCO.Structure;
 import com.sap.mw.jco.JCO.Table;
-import com.sun.xml.xsom.impl.parser.BaseContentRef;
 
 @WebService
 public class Device {
