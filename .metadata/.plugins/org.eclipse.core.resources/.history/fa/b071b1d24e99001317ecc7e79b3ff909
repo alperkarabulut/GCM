@@ -1,0 +1,6 @@
+package com.mbis.gcm.service;
+
+public class Device {
+	public List<[String]> getDevice( ){
+	}
+}

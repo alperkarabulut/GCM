@@ -1,0 +1,14 @@
+package com.mbis.gcm.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Device {
+	public List<String> getDevice( ){
+		List<String> a = new ArrayList<String>();
+		a.add("Deneme");
+		a.add("Helloo");
+		
+		return a;
+	}
+}
